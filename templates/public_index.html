@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школьная информационная система</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🏫 Школьная система</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('index') }}" class="nav-link">Главная</a></li>
+                <li><a href="{{ url_for('login') }}" class="nav-link">Вход</a></li>
+                <li><a href="{{ url_for('register') }}" class="nav-link">Регистрация</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Добро пожаловать в школьную информационную систему</h1>
+                    <p class="hero-subtitle">Современная платформа для управления учебным процессом, студентами и оценками</p>
+                    <div class="hero-buttons">
+                        <a href="{{ url_for('login') }}" class="btn btn-primary btn-large">Войти в систему</a>
+                        <a href="{{ url_for('register') }}" class="btn btn-secondary btn-large">Зарегистрироваться</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <div class="container">
+                <h2 class="section-title">Возможности системы</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Управление студентами</h3>
+                        <p>Добавляйте и управляйте информацией о студентах, их контактами и данными</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📚</div>
+                        <h3>Управление классами</h3>
+                        <p>Создавайте классы, назначайте преподавателей и управляйте расписанием</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📝</div>
+                        <h3>Система оценок</h3>
+                        <p>Ведите учет оценок студентов по различным предметам с комментариями</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Статистика</h3>
+                        <p>Получайте актуальную статистику по студентам, классам и оценкам</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Школьная информационная система. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Классы - Школьная информационная система{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Список классов</h2>
+    <a href="{{ url_for('add_class') }}" class="btn btn-primary">➕ Добавить класс</a>
+</div>
+
+{% if classes %}
+<div class="cards-grid">
+    {% for class_item in classes %}
+    <div class="class-card">
+        <h3>{{ class_item.name }}</h3>
+        <div class="class-info">
+            <p><strong>Преподаватель:</strong> {{ class_item.teacher }}</p>
+            <p><strong>Кабинет:</strong> {{ class_item.room }}</p>
+            <p><strong>Расписание:</strong> {{ class_item.schedule }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="empty-state">
+    <p>Пока нет классов. <a href="{{ url_for('add_class') }}">Добавьте первый класс</a></p>
+</div>
+{% endif %}
+{% endblock %}
+

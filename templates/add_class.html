@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Добавить класс - Школьная информационная система{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Добавить новый класс</h2>
+</div>
+
+<form method="POST" class="form-container">
+    <div class="form-group">
+        <label for="name">Название класса *</label>
+        <input type="text" id="name" name="name" required placeholder="Например: 10-А">
+    </div>
+    
+    <div class="form-group">
+        <label for="teacher">Преподаватель *</label>
+        <input type="text" id="teacher" name="teacher" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="room">Кабинет</label>
+        <input type="text" id="room" name="room" placeholder="Например: 205">
+    </div>
+    
+    <div class="form-group">
+        <label for="schedule">Расписание</label>
+        <textarea id="schedule" name="schedule" rows="4" placeholder="Понедельник: 9:00-10:30&#10;Вторник: 10:00-11:30"></textarea>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ url_for('classes') }}" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+{% endblock %}
+

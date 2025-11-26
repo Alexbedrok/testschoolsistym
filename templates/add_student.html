@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Добавить студента - Школьная информационная система{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Добавить нового студента</h2>
+</div>
+
+<form method="POST" class="form-container">
+    <div class="form-group">
+        <label for="name">Имя *</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="surname">Фамилия *</label>
+        <input type="text" id="surname" name="surname" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone">
+    </div>
+    
+    <div class="form-group">
+        <label for="birth_date">Дата рождения</label>
+        <input type="date" id="birth_date" name="birth_date">
+    </div>
+    
+    <div class="form-group">
+        <label for="class_id">Класс</label>
+        <select id="class_id" name="class_id">
+            <option value="">Не назначен</option>
+            {% for class_item in classes %}
+            <option value="{{ class_item.id }}">{{ class_item.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ url_for('students') }}" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+{% endblock %}
+

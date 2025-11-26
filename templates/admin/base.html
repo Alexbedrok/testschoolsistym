@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Админ-панель - Школьная информационная система{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>🏫 Школьная система</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="{{ url_for('admin_dashboard') }}" class="nav-link">Панель управления</a></li>
+                <li><a href="{{ url_for('students') }}" class="nav-link">Студенты</a></li>
+                <li><a href="{{ url_for('classes') }}" class="nav-link">Классы</a></li>
+                <li><a href="{{ url_for('grades') }}" class="nav-link">Оценки</a></li>
+                <li class="nav-user">
+                    <span class="user-name">{{ session.get('user_name', 'Пользователь') }}</span>
+                    <a href="{{ url_for('logout') }}" class="nav-link">Выход</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-messages">
+                        {% for category, message in messages %}
+                            <div class="flash-message flash-{{ category }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Школьная информационная система. Все права защищены.</p>
+        </div>
+    </footer>
+</body>
+</html>
+

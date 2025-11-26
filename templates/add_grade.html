@@ -1,0 +1,47 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Добавить оценку - Школьная информационная система{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Добавить новую оценку</h2>
+</div>
+
+<form method="POST" class="form-container">
+    <div class="form-group">
+        <label for="student_id">Студент *</label>
+        <select id="student_id" name="student_id" required>
+            <option value="">Выберите студента</option>
+            {% for student in students %}
+            <option value="{{ student.id }}">{{ student.name }} {{ student.surname }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="subject">Предмет *</label>
+        <input type="text" id="subject" name="subject" required placeholder="Например: Математика">
+    </div>
+    
+    <div class="form-group">
+        <label for="grade">Оценка *</label>
+        <input type="number" id="grade" name="grade" min="1" max="5" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="date">Дата *</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="comment">Комментарий</label>
+        <textarea id="comment" name="comment" rows="3" placeholder="Дополнительные заметки"></textarea>
+    </div>
+    
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ url_for('grades') }}" class="btn btn-secondary">Отмена</a>
+    </div>
+</form>
+{% endblock %}
+

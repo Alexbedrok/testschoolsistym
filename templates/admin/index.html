@@ -1,0 +1,46 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Панель управления - Школьная информационная система{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Панель управления</h2>
+    <p>Добро пожаловать, {{ session.get('user_name', 'Пользователь') }}!</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card stat-primary">
+        <div class="stat-icon">👥</div>
+        <div class="stat-content">
+            <h3>{{ stats.total_students }}</h3>
+            <p>Всего студентов</p>
+        </div>
+    </div>
+    
+    <div class="stat-card stat-secondary">
+        <div class="stat-icon">📚</div>
+        <div class="stat-content">
+            <h3>{{ stats.total_classes }}</h3>
+            <p>Классов</p>
+        </div>
+    </div>
+    
+    <div class="stat-card stat-accent">
+        <div class="stat-icon">📝</div>
+        <div class="stat-content">
+            <h3>{{ stats.recent_grades }}</h3>
+            <p>Оценок сегодня</p>
+        </div>
+    </div>
+</div>
+
+<div class="quick-actions">
+    <h3>Быстрые действия</h3>
+    <div class="action-buttons">
+        <a href="{{ url_for('add_student') }}" class="btn btn-primary">➕ Добавить студента</a>
+        <a href="{{ url_for('add_class') }}" class="btn btn-secondary">➕ Добавить класс</a>
+        <a href="{{ url_for('add_grade') }}" class="btn btn-accent">➕ Добавить оценку</a>
+    </div>
+</div>
+{% endblock %}
+
